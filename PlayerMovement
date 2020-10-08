@@ -1,0 +1,28 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Security.Cryptography;
+using System.Threading;
+using UnityEngine;
+
+public class PlayerMovement : MonoBehaviour
+{
+    public float speed = 5f;
+
+    public Rigidbody2D rb;
+
+    public Joystick joystick;
+
+    Vector2 move;
+
+    void Update()
+    {
+        move.x = joystick.Horizontal;
+        move.y = joystick.Vertical;
+
+    }
+
+    private void FixedUpdate()
+    {
+        rb.MovePosition(rb.position + move * speed * Time.fixedDeltaTime);
+    }
+}
